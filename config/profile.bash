@@ -5,7 +5,7 @@
 # Used by `get-profile`, which is used by `setup-git`, `setup-node`
 
 NAME='Jon Penton'
-EMAIL='hey@jondpenton.com'
+EMAIL='jon@spotsource.com'
 # URL=''
-USERNAME='jondpenton'
+USERNAME='jon-spotsource'
 POSSESSIVE_PRONOUN='his'

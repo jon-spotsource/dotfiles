@@ -45,14 +45,35 @@ source "$DOROTHY/config/setup.bash"
 # You can use `setup-mac-brew --configure` to configure some of these.
 # HOMEBREW_UNTAPS=()
 # HOMEBREW_TAPS=()
-# HOMEBREW_FORMULAS=()
+HOMEBREW_FORMULAS=(
+	'awscli'
+	'caddy'
+	'circleci'
+	'direnv'
+	'dive'
+	'dust'
+	'fzf'
+	'ghq'
+	'heroku'
+	'noti'
+	'tealdeer'
+)
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
 	'alfred'
+	'appcleaner'
+	'firefox-developer-edition'
+	'google-chrome'
+	'gpg-suite-no-mail'
 	'insomnia'
 	'iterm2'
+	'keka'
+	'ngrok'
+	'obsidian'
 	'opera-gx'
+	'pgadmin4'
 	'rectangle'
+	'vlc'
 )
 HOMEBREW_FONTS=(
 	'font-fira-code-nerd-font'

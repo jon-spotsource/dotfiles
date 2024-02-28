@@ -52,4 +52,4 @@ OPTIONS=(
 )
 
 # If we have a preference, we can set CHOICE to the URL value of our desired hosts file
-CHOICE='https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts'
+CHOICE='https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts'

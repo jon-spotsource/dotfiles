@@ -51,12 +51,9 @@ HOMEBREW_FORMULAS=(
 	'circleci'
 	'direnv'
 	'dive'
-	'dust'
-	'fzf'
 	'ghq'
 	'heroku'
 	'noti'
-	'tealdeer'
 )
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
@@ -120,6 +117,7 @@ SETUP_UTILS=(
 	'delta'
 	'docker'
 	'dust'
+	'fzf'
 	'gh'
 	'git'
 	'gpg'
@@ -127,6 +125,7 @@ SETUP_UTILS=(
 	'nu'
 	'ripgrep'
 	'starship'
+	'tealdeer'
 	'tree'
 	'vim'
 	'vscode'

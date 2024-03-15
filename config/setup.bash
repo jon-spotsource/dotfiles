@@ -114,6 +114,7 @@ SETUP_UTILS=(
 	'bat'
 	'bottom'
 	'carapace'
+	'circleci'
 	'curl'
 	'delta'
 	'docker'

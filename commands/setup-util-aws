@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# https://github.com/aws/aws-cli
+
+function setup_util_aws() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# improve performance for detectable utilities with conditional assets
+	# if setup-util "$@" --check --cli=dust; then
+	# 	return 0
+	# fi
+
+	# setup
+	local options=(
+		--cli='aws'
+		"$@"
+		BREW='awscli'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_aws "$@"
+fi

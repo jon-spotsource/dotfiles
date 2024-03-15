@@ -109,6 +109,7 @@ GO_LINTING_INSTALL='no'
 # Used by `setup-utils`
 # You can use `setup-utils --configure` to configure these.
 SETUP_UTILS=(
+	'aws'
 	'bash'
 	'bat'
 	'bottom'

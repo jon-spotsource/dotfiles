@@ -48,7 +48,6 @@ source "$DOROTHY/config/setup.bash"
 HOMEBREW_FORMULAS=(
 	'awscli'
 	'caddy'
-	'direnv'
 	'dive'
 	'ghq'
 	'heroku'
@@ -116,6 +115,7 @@ SETUP_UTILS=(
 	'circleci'
 	'curl'
 	'delta'
+	'direnv'
 	'docker'
 	'dust'
 	'fzf'

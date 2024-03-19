@@ -1,7 +1,7 @@
 #!/usr/bin/env nu
 
-def git_root [] {
-	^git rev-parse --show-toplevel
+export def git_root [] {
+	^git rev-parse --show-toplevel | str trim
 }
 
 def main [] {

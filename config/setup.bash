@@ -48,7 +48,6 @@ source "$DOROTHY/config/setup.bash"
 HOMEBREW_FORMULAS=(
 	'awscli'
 	'caddy'
-	'circleci'
 	'direnv'
 	'dive'
 	'ghq'

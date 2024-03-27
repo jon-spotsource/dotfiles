@@ -48,7 +48,6 @@ source "$DOROTHY/config/setup.bash"
 HOMEBREW_FORMULAS=(
 	'awscli'
 	'caddy'
-	'heroku'
 	'noti'
 )
 # HOMEBREW_SLOW_FORMULAS=()
@@ -123,6 +122,7 @@ SETUP_UTILS=(
 	'ghq'
 	'gpg'
 	'grex'
+	'heroku'
 	'nu'
 	'ripgrep'
 	'starship'

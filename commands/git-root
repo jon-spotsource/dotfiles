@@ -1,9 +1,9 @@
 #!/usr/bin/env nu
 
-export def git_root [] {
+export def git_root []: any -> string {
 	^git rev-parse --show-toplevel | str trim
 }
 
-def main [] {
+def main []: any -> string {
 	git_root
 }

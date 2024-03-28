@@ -123,6 +123,7 @@ SETUP_UTILS=(
 	'gpg'
 	'grex'
 	'heroku'
+	'nmap'
 	'nu'
 	'ripgrep'
 	'starship'

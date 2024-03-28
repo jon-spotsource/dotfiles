@@ -5,6 +5,9 @@ use std
 # load the dorothy defaults
 source ~/.local/share/dorothy/config/interactive.nu
 
+$env.config.hooks.display_output = { table }
+$env.config.show_banner = false
+
 $env.DOROTHY_THEME = 'starship'
 
 # Fix dorothy paths

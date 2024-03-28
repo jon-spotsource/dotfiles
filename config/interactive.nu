@@ -17,3 +17,5 @@ std path add ...[
   ($env.DOROTHY | path join commands.beta/),
   ($env.DOROTHY | path join commands/),
 ]
+
+std path add /usr/local/opt/ruby/bin

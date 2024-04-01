@@ -52,7 +52,6 @@ HOMEBREW_FORMULAS=(
 )
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
-	'alfred'
 	'appcleaner'
 	'firefox-developer-edition'
 	'google-chrome'
@@ -104,6 +103,7 @@ GO_LINTING_INSTALL='no'
 # Used by `setup-utils`
 # You can use `setup-utils --configure` to configure these.
 SETUP_UTILS=(
+	'alfred'
 	'aws'
 	'bash'
 	'bat'
@@ -118,8 +118,8 @@ SETUP_UTILS=(
 	'dust'
 	'fzf'
 	'gh'
-	'git'
 	'ghq'
+	'git'
 	'gpg'
 	'grex'
 	'heroku'

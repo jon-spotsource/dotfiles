@@ -52,7 +52,6 @@ HOMEBREW_FORMULAS=(
 )
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
-	'appcleaner'
 	'firefox-developer-edition'
 	'google-chrome'
 	'gpg-suite-no-mail'
@@ -104,6 +103,7 @@ GO_LINTING_INSTALL='no'
 # You can use `setup-utils --configure` to configure these.
 SETUP_UTILS=(
 	'alfred'
+	'appcleaner'
 	'aws'
 	'bash'
 	'bat'

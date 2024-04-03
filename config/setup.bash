@@ -52,7 +52,6 @@ HOMEBREW_FORMULAS=(
 )
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
-	'firefox-developer-edition'
 	'google-chrome'
 	'gpg-suite-no-mail'
 	'insomnia'
@@ -118,6 +117,7 @@ SETUP_UTILS=(
 	'dive'
 	'docker'
 	'dust'
+	'firefox-dev'
 	'fzf'
 	'gh'
 	'ghq'

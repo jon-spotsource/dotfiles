@@ -65,9 +65,11 @@ HOMEBREW_CASKS=(
 	'rectangle'
 	'vlc'
 )
+
+# Run `setup-mac-brew install` to install new fonts
 HOMEBREW_FONTS=(
 	'font-fira-code-nerd-font'
-	'font-noto-emoji'
+	'font-inter'
 )
 # HOMEBREW_UNINSTALL=()        # for casks and formulas
 HOMEBREW_ENCODING_INSTALL='no'

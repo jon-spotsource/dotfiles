@@ -52,7 +52,6 @@ HOMEBREW_FORMULAS=(
 )
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
-	'google-chrome'
 	'gpg-suite-no-mail'
 	'insomnia'
 	'iterm2'
@@ -110,6 +109,7 @@ SETUP_UTILS=(
 	'bat'
 	'bottom'
 	'carapace'
+	'chrome'
 	'circleci'
 	'curl'
 	'delta'

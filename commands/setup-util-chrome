@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+function setup_util_chrome() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# setup
+	local options=(
+		--app='Google Chrome'
+		--cli='chrome'
+		"$@"
+		CASK='google-chrome'
+		# CASK_TAP='homebrew/cask-versions'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_chrome "$@"
+fi

@@ -53,7 +53,6 @@ HOMEBREW_FORMULAS=(
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
 	'gpg-suite-no-mail'
-	'insomnia'
 	'iterm2'
 	'keka'
 	'ngrok'
@@ -125,6 +124,7 @@ SETUP_UTILS=(
 	'gpg'
 	'grex'
 	'heroku'
+	'insomnia'
 	'nmap'
 	'nu'
 	'ripgrep'

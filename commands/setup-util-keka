@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# https://github.com/aonez/Keka
+
+function setup_util_keka() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# checks
+	if ! is-mac; then
+		if ! is-quiet-enabled -- "$@"; then
+			echo-style --notice="[$0] is only intended to be run on Apple Silicon macOS systems, skipping." >/dev/stderr
+		fi
+		return 0
+	fi
+
+	# setup
+	local options=(
+		--app='Keka'
+		--cli='keka'
+		"$@"
+		CASK='keka'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_keka "$@"
+fi

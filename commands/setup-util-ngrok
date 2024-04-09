@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# https://ngrok.com
+
+function setup_util_ngrok() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# setup
+	local options=(
+		--cli='ngrok'
+		"$@"
+		CASK='ngrok'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_ngrok "$@"
+fi

@@ -54,7 +54,6 @@ HOMEBREW_FORMULAS=(
 HOMEBREW_CASKS=(
 	'gpg-suite-no-mail'
 	'iterm2'
-	'obsidian'
 	'opera-gx'
 	'pgadmin4'
 	'rectangle'
@@ -127,6 +126,7 @@ SETUP_UTILS=(
 	'ngrok'
 	'nmap'
 	'nu'
+	'obsidian'
 	'ripgrep'
 	'starship'
 	'tealdeer'

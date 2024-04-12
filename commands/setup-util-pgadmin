@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# https://github.com/pgadmin-org/pgadmin4
+# https://ftp.postgresql.org/pub/pgadmin/pgadmin4
+
+function setup_util_pgadmin() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# setup
+	local options=(
+		--app='pgAdmin4'
+		--cli='pgadmin'
+		"$@"
+		CASK='pgadmin4'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_pgadmin "$@"
+fi

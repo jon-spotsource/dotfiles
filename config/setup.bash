@@ -55,7 +55,6 @@ HOMEBREW_CASKS=(
 	'gpg-suite-no-mail'
 	'iterm2'
 	'opera-gx'
-	'pgadmin4'
 	'rectangle'
 	'vlc'
 )
@@ -127,6 +126,7 @@ SETUP_UTILS=(
 	'nmap'
 	'nu'
 	'obsidian'
+	'pgadmin'
 	'ripgrep'
 	'starship'
 	'tealdeer'

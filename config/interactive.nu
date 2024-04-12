@@ -22,3 +22,5 @@ std path add ...[
 ]
 
 std path add /usr/local/opt/ruby/bin
+
+$env.PATH = ($env.PATH | uniq) # Remove duplicates

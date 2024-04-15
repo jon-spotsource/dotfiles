@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# https://github.com/aonez/Keka
+# https://github.com/rxhanson/Rectangle
 
-function setup_util_keka() (
+function setup_util_rectangle() (
 	source "$DOROTHY/sources/bash.bash"
 
 	# checks
@@ -15,10 +15,10 @@ function setup_util_keka() (
 
 	# setup
 	local options=(
-		--app='Keka'
-		--cli='keka'
+		--app='Rectangle'
+		--cli='rectangle'
 		"$@"
-		CASK='keka'
+		CASK='rectangle'
 	)
 
 	setup-util "${options[@]}"
@@ -26,5 +26,5 @@ function setup_util_keka() (
 
 # fire if invoked standalone
 if test "$0" = "${BASH_SOURCE[0]}"; then
-	setup_util_keka "$@"
+	setup_util_rectangle "$@"
 fi

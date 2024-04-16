@@ -129,6 +129,7 @@ SETUP_UTILS=(
 	'rectangle'
 	'ripgrep'
 	'starship'
+	'tailscale'
 	'tealdeer'
 	'tree'
 	'vim'

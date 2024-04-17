@@ -55,7 +55,6 @@ HOMEBREW_CASKS=(
 	'gpg-suite-no-mail'
 	'iterm2'
 	'opera-gx'
-	'vlc'
 )
 
 # Run `setup-mac-brew install` to install new fonts
@@ -133,6 +132,7 @@ SETUP_UTILS=(
 	'tealdeer'
 	'tree'
 	'vim'
+	'vlc'
 	'vscode'
 	'wget'
 )

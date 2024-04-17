@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# https://www.videolan.org/vlc
+
+function setup_util_vlc() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# setup
+	local options=(
+		--app='VLC media player'
+		--cli='vlc'
+		"$@"
+		CASK='vlc'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_vlc "$@"
+fi

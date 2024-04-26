@@ -120,6 +120,7 @@ SETUP_UTILS=(
 	'heroku'
 	'insomnia'
 	'keka'
+	'microsoft-teams'
 	'ngrok'
 	'nmap'
 	'nu'

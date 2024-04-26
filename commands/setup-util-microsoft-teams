@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# https://www.microsoft.com/en/microsoft-teams/group-chat-software/
+
+function setup_util_microsoft_teams() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# setup
+	local options=(
+		--app='Microsoft Teams'
+		--cli='microsoft-teams'
+		"$@"
+		CASK='microsoft-teams'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_microsoft_teams "$@"
+fi

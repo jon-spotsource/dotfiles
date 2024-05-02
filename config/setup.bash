@@ -118,7 +118,7 @@ SETUP_UTILS=(
 	'gpg'
 	'grex'
 	'heroku'
-	'insomnia'
+	'insomnium'
 	'keka'
 	'microsoft-teams'
 	'ngrok'

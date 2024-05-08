@@ -8,8 +8,7 @@ function setup_util_firefox_dev() (
 		--app='Mozilla Firefox Developer Edition'
 		--cli='firefox-dev'
 		"$@"
-		CASK='homebrew/cask-versions/firefox-developer-edition'
-		CASK_TAP='homebrew/cask-versions'
+		CASK='firefox-developer-edition'
 	)
 
 	setup-util "${options[@]}"

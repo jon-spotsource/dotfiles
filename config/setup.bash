@@ -43,7 +43,10 @@ source "$DOROTHY/config/setup.bash"
 # Homebrew / brew / https://brew.sh
 # Used by `setup-mac-brew`
 # You can use `setup-mac-brew --configure` to configure some of these.
-# HOMEBREW_UNTAPS=()
+HOMEBREW_UNTAPS=(
+	# Deprecated
+	'homebrew/cask-fonts'
+)
 # HOMEBREW_TAPS=()
 HOMEBREW_FORMULAS=(
 	'awscli'
@@ -52,16 +55,15 @@ HOMEBREW_FORMULAS=(
 )
 # HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
+	'font-fira-code-nerd-font'
+	'font-inter'
 	'gpg-suite-no-mail'
 	'iterm2'
 	'opera-gx'
 )
 
 # Run `setup-mac-brew install` to install new fonts
-HOMEBREW_FONTS=(
-	'font-fira-code-nerd-font'
-	'font-inter'
-)
+# HOMEBREW_FONTS=()
 # HOMEBREW_UNINSTALL=()        # for casks and formulas
 HOMEBREW_ENCODING_INSTALL='no'
 

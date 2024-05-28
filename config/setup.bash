@@ -100,6 +100,7 @@ SETUP_UTILS=(
 	'alfred'
 	'appcleaner'
 	'aws'
+	'aws-vault'
 	'bash'
 	'bat'
 	'bottom'

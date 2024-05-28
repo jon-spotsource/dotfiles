@@ -75,14 +75,14 @@ function setup_ruby() (
 	done
 
 	# check
-	# if test "${#GEM_INSTALL[@]}" -eq 0; then
-	# 	if test "$option_configure" = 'no'; then
-	# 		echo-style --dim='Setup of Ruby ecosystem skipped.'
-	# 		return 0
-	# 	elif ! confirm --negative --ppid=$$ -- 'Setup Ruby ecosystem?'; then
-	# 		return 0
-	# 	fi
-	# fi
+	if test "${#GEM_INSTALL[@]}" -eq 0; then
+		if test "$option_configure" = 'no'; then
+			echo-style --dim='Setup of Ruby ecosystem skipped.'
+			return 0
+		elif ! confirm --negative --ppid=$$ -- 'Setup Ruby ecosystem?'; then
+			return 0
+		fi
+	fi
 
 	# =====================================
 	# Start

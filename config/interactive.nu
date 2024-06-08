@@ -35,6 +35,7 @@ $env.config.table.mode = 'thin'
 # Environment variables
 $env.DOROTHY_THEME = 'starship'
 $env.NOTI_DEFAULT = 'banner telegram'
+$env.PNPM_HOME = ('~/.local/share/pnpm' | path expand)
 
 # Paths
 std path add ...[
@@ -46,6 +47,7 @@ std path add ...[
   ~/.local/bin/
   ~/.nix-profile/bin/
   ~/.rvm/bin
+  $env.PNPM_HOME
 ]
 
 # Fix dorothy paths

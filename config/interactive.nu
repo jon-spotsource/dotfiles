@@ -34,6 +34,11 @@ $env.config.table.mode = 'thin'
 
 # Environment variables
 $env.DOROTHY_THEME = 'starship'
+$env.HOMEBREW_CELLAR = '/usr/local/Cellar'
+$env.HOMEBREW_PREFIX = '/usr/local'
+$env.HOMEBREW_REPOSITORY = '/usr/local/Homebrew'
+$env.INFOPATH = '/usr/local/share/info'
+$env.MANPATH = '/usr/local/share/man'
 $env.NOTI_DEFAULT = 'banner telegram'
 $env.PNPM_HOME = ('~/.local/share/pnpm' | path expand)
 
@@ -44,6 +49,7 @@ std path add ...[
   /usr/local/bin/
   /usr/local/MacGPG2/bin/ # GPG Suite
   /usr/local/opt/ruby/bin/ # Homebrew ruby
+  /usr/local/sbin/
   ~/.local/bin/
   ~/.nix-profile/bin/
   ~/.rvm/bin

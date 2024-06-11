@@ -123,7 +123,7 @@ SETUP_UTILS=(
 	'heroku'
 	'insomnium'
 	'keka'
-	'microsoft-teams'
+	# 'microsoft-teams'
 	'ngrok'
 	'nmap'
 	'nu'

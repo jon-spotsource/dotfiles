@@ -34,6 +34,7 @@ $env.config.table.mode = 'thin'
 
 # Environment variables
 $env.DOROTHY_THEME = 'starship'
+$env.GNUPGHOME = ('~/.gnupg/' | path expand)
 $env.HOMEBREW_CELLAR = '/usr/local/Cellar'
 $env.HOMEBREW_PREFIX = '/usr/local'
 $env.HOMEBREW_REPOSITORY = '/usr/local/Homebrew'

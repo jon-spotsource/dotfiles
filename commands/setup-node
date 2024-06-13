@@ -79,6 +79,14 @@ function setup_node() (
 		esac
 	done
 
+	# check
+	if test "${#NPM_INSTALL[@]}" -eq 0; then
+		if test "${NODE_SKIP_UPDATE-}" = 'yes'; then
+			echo-style --dim='Setup of Node.js ecosystem skipped.'
+			return 0
+		fi
+	fi
+
 	# =====================================
 	# Start
 

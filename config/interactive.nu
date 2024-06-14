@@ -47,6 +47,7 @@ $env.PNPM_HOME = ('~/.local/share/pnpm' | path expand)
 std path add ...[
   ~/.rbenv/shims # Must be before Homebrew ruby
 
+  /nix/var/nix/profiles/default/bin/
   /usr/local/bin/
   /usr/local/MacGPG2/bin/ # GPG Suite
   /usr/local/opt/ruby/bin/ # Homebrew ruby

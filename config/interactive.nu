@@ -42,6 +42,11 @@ $env.INFOPATH = '/usr/local/share/info'
 $env.MANPATH = '/usr/local/share/man'
 $env.NOTI_DEFAULT = 'banner telegram'
 $env.PNPM_HOME = ('~/.local/share/pnpm' | path expand)
+$env.XDG_BIN_HOME = ('~/.local/bin' | path expand)
+$env.XDG_CACHE_HOME = ('~/.cache' | path expand)
+$env.XDG_CONFIG_HOME = ('~/.config' | path expand)
+$env.XDG_DATA_HOME = ('~/.local/share' | path expand)
+$env.XDG_STATE_HOME = ('~/.local/state' | path expand)
 
 # Paths
 std path add ...[

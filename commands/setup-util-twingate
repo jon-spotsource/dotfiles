@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# https://binaries.twingate.com/client/macos/latest/Twingate.pkg
+
+function setup_util_twingate() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# setup
+	local options=(
+		--app='Twingate'
+		"$@"
+		INSTALLER='https://api.twingate.com/download/darwin?installer=pkg'
+		INSTALLER_FILENAME='Twingate.pkg'
+		INSTALLER_OPEN='yes'
+	)
+
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_twingate "$@"
+fi

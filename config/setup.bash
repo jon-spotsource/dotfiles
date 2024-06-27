@@ -135,6 +135,7 @@ SETUP_UTILS=(
 	'tailscale'
 	'tealdeer'
 	'tree'
+	'twingate'
 	'vim'
 	'vlc'
 	'vscode'

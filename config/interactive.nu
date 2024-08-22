@@ -34,19 +34,16 @@ $env.config.table.mode = 'thin'
 
 # Environment variables
 $env.DOROTHY_THEME = 'starship'
-$env.GNUPGHOME = ('~/.gnupg/' | path expand)
-$env.HOMEBREW_CELLAR = '/usr/local/Cellar'
-$env.HOMEBREW_PREFIX = '/usr/local'
-$env.HOMEBREW_REPOSITORY = '/usr/local/Homebrew'
+$env.GNUPGHOME = '~/.gnupg/' | path expand
 $env.INFOPATH = '/usr/local/share/info'
 $env.MANPATH = '/usr/local/share/man'
 $env.NOTI_DEFAULT = 'banner telegram'
-$env.PNPM_HOME = ('~/.local/share/pnpm' | path expand)
-$env.XDG_BIN_HOME = ('~/.local/bin' | path expand)
-$env.XDG_CACHE_HOME = ('~/.cache' | path expand)
-$env.XDG_CONFIG_HOME = ('~/.config' | path expand)
-$env.XDG_DATA_HOME = ('~/.local/share' | path expand)
-$env.XDG_STATE_HOME = ('~/.local/state' | path expand)
+$env.PNPM_HOME = '~/.local/share/pnpm' | path expand
+$env.XDG_BIN_HOME = '~/.local/bin' | path expand
+$env.XDG_CACHE_HOME = '~/.cache' | path expand
+$env.XDG_CONFIG_HOME = '~/.config' | path expand
+$env.XDG_DATA_HOME = '~/.local/share' | path expand
+$env.XDG_STATE_HOME = '~/.local/state' | path expand
 
 # Paths
 std path add ...[
@@ -61,14 +58,6 @@ std path add ...[
   ~/.nix-profile/bin/
   ~/.rvm/bin
   $env.PNPM_HOME
-]
-
-# Fix dorothy paths
-std path add ...[
-  ($env.DOROTHY | path join user/commands.local/)
-  ($env.DOROTHY | path join user/commands/)
-  ($env.DOROTHY | path join commands.beta/)
-  ($env.DOROTHY | path join commands/)
 ]
 
 $env.PATH = ($env.PATH | uniq) # Remove duplicates

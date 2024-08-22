@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+# https://github.com/junegunn/fzf
+# fuzzy finder
+
+# https://github.com/junegunn/fzf/releases
+# fzf-0.54.3-darwin_amd64.tar.gz
+# fzf-0.54.3-darwin_arm64.tar.gz
+# fzf-0.54.3-freebsd_amd64.tar.gz
+# fzf-0.54.3-linux_amd64.tar.gz
+# fzf-0.54.3-linux_arm64.tar.gz
+# fzf-0.54.3-linux_armv5.tar.gz
+# fzf-0.54.3-linux_armv6.tar.gz
+# fzf-0.54.3-linux_armv7.tar.gz
+# fzf-0.54.3-linux_loong64.tar.gz
+# fzf-0.54.3-linux_ppc64le.tar.gz
+# fzf-0.54.3-linux_s390x.tar.gz
+# fzf-0.54.3-openbsd_amd64.tar.gz
+# fzf-0.54.3-windows_amd64.zip
+# fzf-0.54.3-windows_arm64.zip
+# fzf-0.54.3-windows_armv5.zip
+# fzf-0.54.3-windows_armv6.zip
+# fzf-0.54.3-windows_armv7.zip
+
+# https://packages.debian.org/sid/amd64/fzf/filelist
+# /usr/bin/fzf
+# /usr/bin/fzf-tmux
+
+function setup_util_fzf() (
+	source "$DOROTHY/sources/bash.bash"
+
+	# improve performance for detectable utilities with conditional assets
+	if setup-util "$@" --check --cli=fzf; then
+		return 0
+	fi
+
+	# setup
+	local arch options=(
+		--cli='fzf'
+		"$@"
+		APK='fzf' # ALPINE
+		APT='fzf' # UBUNTU
+		AUR='fzf' # ARCH
+		BREW='fzf'
+		CHOCO='fzf'
+		RPM='fzf'               # FEDORA
+		EMERGE='app-shells/fzf' # GENTOO
+		NIX='nixpkgs.fzf'
+		PKG='fzf'
+		PKGADD='fzf'
+		PKGIN='fzf'
+		SCOOP='fzf'
+		WINGET='fzf'
+		XBPS='fzf'   # VOID
+		ZYPPER='fzf' # SUSE
+	)
+	function get_github_asset_url {
+		github-download \
+			--dry \
+			--slug='junegunn/fzf' \
+			--latest \
+			--asset-regexp="$(echo-escape-regexp -- "$1")$" | echo-first-line || :
+	}
+	function add_download_option {
+		options+=(
+			DOWNLOAD="$(get_github_asset_url "$1")"
+			DOWNLOAD_ARCHIVE_GLOB='fzf'
+		)
+	}
+	function add_download_option_windows {
+		options+=(
+			DOWNLOAD="$(get_github_asset_url "$1")"
+			DOWNLOAD_UNZIP_FORMAT='zip'
+		)
+	}
+	arch="$(get-arch)"
+	if is-mac; then
+		if test "$arch" = 'x64'; then
+			add_download_option '-darwin_amd64.tar.gz'
+		elif test "$arch" = 'a64'; then
+			add_download_option '-darwin_arm64.zip'
+		fi
+	elif is-linux; then
+		if test "$arch" = 'x64'; then
+			add_download_option '-linux_amd64.tar.gz'
+		elif test "$arch" = 'a64'; then
+			add_download_option '-linux_arm64.tar.gz'
+		elif test "$arch" = 'a32'; then
+			add_download_option '-linux_armv7.tar.gz'
+		fi
+	elif is-wsl; then
+		if test "$arch" = 'x64'; then
+			add_download_option_windows '-windows_amd64.zip'
+		elif test "$arch" = 'a64'; then
+			add_download_option_windows '-windows_arm64.zip'
+		elif test "$arch" = 'a32'; then
+			add_download_option_windows '-windows_armv7.zip'
+		fi
+	fi
+	setup-util "${options[@]}"
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_util_fzf "$@"
+fi

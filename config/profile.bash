@@ -4,8 +4,8 @@
 
 # Used by `get-profile`, which is used by `setup-git`, `setup-node`
 
-NAME='Jon Penton'
 EMAIL='jon@spotsource.com'
+NAME='Jon Penton'
+POSSESSIVE_PRONOUN='his'
 # URL=''
 USERNAME='jon-spotsource'
-POSSESSIVE_PRONOUN='his'

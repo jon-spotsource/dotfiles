@@ -43,17 +43,6 @@ source "$DOROTHY/config/setup.bash"
 # Homebrew / brew / https://brew.sh
 # Used by `setup-mac-brew`
 # You can use `setup-mac-brew --configure` to configure some of these.
-HOMEBREW_UNTAPS=(
-	# Deprecated
-	'homebrew/cask-fonts'
-)
-# HOMEBREW_TAPS=()
-HOMEBREW_FORMULAS=(
-	'awscli'
-	'caddy'
-	'noti'
-)
-# HOMEBREW_SLOW_FORMULAS=()
 HOMEBREW_CASKS=(
 	'font-fira-code-nerd-font'
 	'font-inter'
@@ -61,11 +50,42 @@ HOMEBREW_CASKS=(
 	'iterm2'
 	'opera-gx'
 )
-
-# Run `setup-mac-brew install` to install new fonts
-# HOMEBREW_FONTS=()
-# HOMEBREW_UNINSTALL=()        # for casks and formulas
 HOMEBREW_ENCODING_INSTALL='no'
+HOMEBREW_FONTS=(
+	'font-cantarell'
+	'font-cascadia-code'
+	'font-fira-code'
+	'font-fira-code-nerd-font'
+	'font-fira-mono'
+	'font-fira-mono-nerd-font'
+	'font-hack' # many editors require this
+	'font-hasklig'
+	'font-ibm-plex' # many editors require this
+	'font-inconsolata-go-nerd-font'
+	'font-inter' # many apps require this
+	'font-jetbrains-mono'
+	'font-jetbrains-mono-nerd-font'
+	'font-lato'
+	'font-maven-pro'
+	'font-monoid'
+	'font-montserrat'
+	'font-open-sans'
+	'font-oxygen'
+	'font-oxygen-mono'
+	'font-roboto'
+	'font-roboto-mono'
+	'font-source-code-pro' # many editors require this
+	'font-ubuntu'
+)
+HOMEBREW_FORMULAS=(
+	'awscli'
+	'caddy'
+	'noti'
+)
+# HOMEBREW_SLOW_FORMULAS=()
+# HOMEBREW_TAPS=()
+# HOMEBREW_UNINSTALL=() # for casks and formulas
+# HOMEBREW_UNTAPS=()
 
 # Golang / go
 # Used by `setup-go`
@@ -91,7 +111,9 @@ GO_LINTING_INSTALL='no'
 
 # Rust / Cargo / Crates.io
 # Used by `setup-rust`
-# CARGO_INSTALL=()
+CARGO_INSTALL=(
+	'story-tracker-cli'
+)
 
 # Utilities to install, these are the [setup-util-*] scripts
 # Used by `setup-utils`

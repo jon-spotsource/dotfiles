@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+
+function setup_go() (
+	source "$DOROTHY/sources/bash.bash"
+	__require_array 'mapfile'
+
+	# =====================================
+	# Configuration
+
+	source "$DOROTHY/sources/config.sh"
+
+	# setup.bash provides:
+	local GO_INSTALL=()
+	local GO_LINTING_INSTALL='' # '', 'yes', 'no'
+	load_dorothy_config 'setup.bash'
+
+	# adjustments
+	mapfile -t GO_INSTALL < <(dorothy-config --packages-var='GO_INSTALL' -- "${GO_INSTALL[@]}")
+
+	# =====================================
+	# Arguments
+
+	function help {
+		cat <<-EOF >/dev/stderr
+			Setup the Go ecosystem.
+
+			USAGE:
+			setup-go [...options] [install|update|setup|configure]
+
+			OPTIONS:
+			--configure
+			    Whether to prompt, confirm, or save configuration changes.
+
+			--linting
+			    Install linting tools.
+		EOF
+		if test "$#" -ne 0; then
+			echo-error "$@"
+		fi
+		return 22 # EINVAL 22 Invalid argument
+	}
+
+	# process
+	local item option_configure=''
+	while test "$#" -ne 0; do
+		item="$1"
+		shift
+		case "$item" in
+		'--help' | '-h') help ;;
+		# install|update|setup|configure
+		'setup') ;;
+		'update')
+			option_configure='no'
+			;;
+		'install' | 'configure')
+			option_configure='yes'
+			;;
+		'--no-configure'* | '--configure'*)
+			option_configure="$(get-flag-value --affirmative --fallback="$option_configure" -- "$item")"
+			;;
+		'--no-linting'* | '--linting'*)
+			GO_LINTING_INSTALL="$(get-flag-value --affirmative --fallback="$GO_LINTING_INSTALL" -- "$item")"
+			;;
+		'--'*) help "An unrecognised flag was provided: $item" ;;
+		*) help "An unrecognised argument was provided: $item" ;;
+		esac
+	done
+
+	# check
+	# if test "${#GO_INSTALL[@]}" -eq 0 -a "$GO_LINTING_INSTALL" != 'yes'; then
+	# 	if test "$option_configure" = 'no'; then
+	# 		echo-style --dim='Setup of Go ecosystem skipped.'
+	# 		return 0
+	# 	elif ! confirm --linger --negative --ppid=$$ -- 'Setup Go ecosystem?'; then
+	# 		return 0
+	# 	fi
+	# fi
+
+	# =====================================
+	# Start
+
+	echo-style --h1='Setup Go'
+
+	# =====================================
+	# Install
+
+	setup-util-go
+	source "$DOROTHY/sources/environment.sh"
+
+	# =====================================
+	# Adjustments
+
+	# determine full value for GO_LINTING_INSTALL
+	if test -z "$GO_LINTING_INSTALL" -o "$option_configure" = 'yes'; then
+		option_configure='yes'
+		if confirm --linger --negative --ppid=$$ -- "Do you also want to install go linting packages? This is desired if you plan to code with go."; then
+			GO_LINTING_INSTALL='yes'
+		else
+			GO_LINTING_INSTALL='no'
+		fi
+	fi
+
+	# if yes, then install the linting tools
+	if test "$GO_LINTING_INSTALL" = 'yes'; then
+		setup-util-golint
+	fi
+
+	# =====================================
+	# Packages
+
+	setup-util --installer=GO -- "${GO_INSTALL[@]}"
+
+	# =====================================
+	# Configure
+
+	if test "$option_configure" = 'yes'; then
+		dorothy-config 'setup.bash' -- \
+			--field='GO_LINTING_INSTALL' --value="$GO_LINTING_INSTALL"
+	fi
+
+	# =====================================
+	# Finish
+
+	echo-style --g1='Setup Go'
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_go "$@"
+fi

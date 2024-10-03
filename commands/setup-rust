@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+function setup_rust() (
+	source "$DOROTHY/sources/bash.bash"
+	__require_array 'mapfile'
+
+	# =====================================
+	# Configuration
+
+	source "$DOROTHY/sources/config.sh"
+
+	# setup.bash provides:
+	local CARGO_INSTALL=()
+	local RUST_INSTALL=() # deprecated, use CARGO_INSTALL
+	load_dorothy_config 'setup.bash'
+
+	# deprecations
+	if test "${#RUST_INSTALL[@]}" -ne 0; then
+		CARGO_INSTALL+=("${RUST_INSTALL[@]}")
+		dorothy-config 'setup.bash' -- \
+			--field='RUST_INSTALL' --replace= \
+			--field='CARGO_INSTALL' --array="$(__print_lines "${CARGO_INSTALL[@]}" | sort --ignore-case | uniq)"
+	fi
+
+	# adjustments
+	mapfile -t CARGO_INSTALL < <(dorothy-config --packages-var='CARGO_INSTALL' -- "${CARGO_INSTALL[@]}")
+
+	# =====================================
+	# Arguments
+
+	function help {
+		cat <<-EOF >/dev/stderr
+			ABOUT:
+			Setup the Rust ecosystem.
+
+			USAGE:
+			setup-rust [...options] [install|update|setup|configure]
+
+			OPTIONS:
+			--configure
+			    Whether to prompt, confirm, or save configuration changes.
+		EOF
+		if test "$#" -ne 0; then
+			echo-error "$@"
+		fi
+		return 22 # EINVAL 22 Invalid argument
+	}
+
+	# process
+	local item option_configure=''
+	while test "$#" -ne 0; do
+		item="$1"
+		shift
+		case "$item" in
+		'--help' | '-h') help ;;
+		# install|update|setup|configure
+		'setup') ;;
+		'update')
+			option_configure='no'
+			;;
+		'install' | 'configure')
+			option_configure='yes'
+			;;
+		'--no-configure'* | '--configure'*)
+			option_configure="$(get-flag-value --affirmative --fallback="$option_configure" -- "$item")"
+			;;
+		'--'*) help "An unrecognised flag was provided: $item" ;;
+		*) help "An unrecognised argument was provided: $item" ;;
+		esac
+	done
+
+	# check
+	# if test "${#CARGO_INSTALL[@]}" -eq 0; then
+	# 	if test "$option_configure" = 'no'; then
+	# 		echo-style --dim='Setup of Rust ecosystem skipped.'
+	# 		return 0
+	# 	elif ! confirm --linger --negative --ppid=$$ -- 'Setup Rust ecosystem?'; then
+	# 		return 0
+	# 	fi
+	# fi
+
+	# =====================================
+	# Start
+
+	echo-style --h1='Setup Rust'
+
+	# =====================================
+	# Install
+
+	setup-util-rust --upgrade --no-quiet
+
+	# =====================================
+	# Packages
+
+	setup-util --installer=CARGO -- "${CARGO_INSTALL[@]}"
+	cargo install cargo-update
+	cargo install-update --all
+
+	# =====================================
+	# Finish
+
+	echo-style --g1='Setup Rust'
+)
+
+# fire if invoked standalone
+if test "$0" = "${BASH_SOURCE[0]}"; then
+	setup_rust "$@"
+fi

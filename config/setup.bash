@@ -46,9 +46,12 @@ source "$DOROTHY/config/setup.bash"
 HOMEBREW_CASKS=(
 	'font-fira-code-nerd-font'
 	'font-inter'
+	'font-hack'            # many editors require this
+	'font-ibm-plex'        # many editors require this
+	'font-inter'           # many apps require this
+	'font-source-code-pro' # many editors require this
 	'gpg-suite-no-mail'
 	'iterm2'
-	'opera-gx'
 )
 HOMEBREW_ENCODING_INSTALL='no'
 HOMEBREW_FONTS=(
@@ -78,7 +81,6 @@ HOMEBREW_FONTS=(
 	# 'font-ubuntu'
 )
 HOMEBREW_FORMULAS=(
-	'awscli'
 	'caddy'
 	'noti'
 )
@@ -112,6 +114,7 @@ GO_LINTING_INSTALL='no'
 # Rust / Cargo / Crates.io
 # Used by `setup-rust`
 CARGO_INSTALL=(
+	'cargo-update'
 	'story-tracker-cli'
 )
 

@@ -150,7 +150,7 @@ SETUP_UTILS=(
 	'nmap'
 	'nu'
 	'obsidian'
-	'pgadmin'
+	# 'pgadmin'
 	'rectangle'
 	'ripgrep'
 	'starship'

@@ -157,7 +157,7 @@ SETUP_UTILS=(
 	'rectangle'
 	'ripgrep'
 	'starship'
-	'tailscale'
+	# 'tailscale'
 	'tealdeer'
 	'tree'
 	'twingate'

@@ -3,7 +3,7 @@
 # place all `export` keyword declarations at the start for bash
 # v3 compatibility:
 # shellcheck disable=SC2034
-export AWS_CLI_AUTO_PROMPT HOMEBREW_ARCH HOMEBREW_RUBY_VERSION NVM_DIR
+export AWS_CLI_AUTO_PROMPT HOMEBREW_ARCH HOMEBREW_RUBY_VERSION NVM_DIR STARSHIP_CONFIG
 
 # Used by: `aws`
 AWS_CLI_AUTO_PROMPT='on'
@@ -17,4 +17,7 @@ HOMEBREW_ARCH='x86_64' # 'arm64e'
 HOMEBREW_RUBY_VERSION='default'
 
 # Used by: `setup-environment-commands`, `setup-node`
-NVM_DIR="$HOME/.nvm"
+NVM_DIR="${HOME}/.nvm"
+
+# Used by: `starship`
+STARSHIP_CONFIG="${DOROTHY}/user/config/starship.toml"

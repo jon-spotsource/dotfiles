@@ -1,6 +1,7 @@
 #!/usr/bin/env nu
 
-use std
+use std *
+use std/dirs shells-aliases *
 
 # Config
 $env.config.completions.algorithm = 'fuzzy'
@@ -38,7 +39,7 @@ $env.XDG_DATA_HOME = '~/.local/share' | path expand
 $env.XDG_STATE_HOME = '~/.local/state' | path expand
 
 # Paths
-std path add ...[
+path add ...[
   ~/.rbenv/shims # Must be before Homebrew ruby
 
   /nix/var/nix/profiles/default/bin/

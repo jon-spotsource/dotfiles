@@ -1,7 +1,9 @@
 #!/usr/bin/env nu
 
-use std *
+overlay use std
 use std/dirs shells-aliases *
+
+overlay new user-config
 
 # Config
 $env.config.completions.algorithm = 'fuzzy'
@@ -74,3 +76,5 @@ extern 'devenv tasks run' [
 def --wrapped nix [...rest] {
 	^nix ...$rest --extra-experimental-features nix-command
 }
+
+overlay new session

@@ -54,3 +54,7 @@ path add ...[
 ]
 
 $env.PATH = ($env.PATH | uniq) # Remove duplicates
+
+def --wrapped nix [...rest] {
+	^nix ...$rest --extra-experimental-features nix-command
+}

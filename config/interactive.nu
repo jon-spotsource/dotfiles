@@ -57,6 +57,6 @@ path add ...[
 
 $env.PATH = ($env.PATH | uniq) # Remove duplicates
 
-overlay use ../commands
-overlay use ../completions
+overlay use ../commands as user-commands
+overlay use ../completions as user-completions
 overlay new session

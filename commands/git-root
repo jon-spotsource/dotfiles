@@ -1,13 +1,6 @@
 #!/usr/bin/env nu
 
 # Returns root path of current git repo
-export def git_root []: any -> string {
+export def main []: any -> string {
 	^git rev-parse --show-toplevel | str trim
-}
-
-# fire if invoked standalone
-
-# Returns root path of current git repo
-def main []: any -> string {
-	git_root
 }

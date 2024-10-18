@@ -4,3 +4,10 @@ export def 'nu-complete node installed binaries' [] {
 		| path basename
 		| sort
 }
+
+export def 'nu-complete node scripts' [] {
+	open package.json
+		| get scripts
+		| columns
+		| sort
+}

@@ -1,9 +1,9 @@
 #!/usr/bin/env nu
 
-overlay use std
-use std/dirs shells-aliases *
-
 overlay new user-config
+
+use std *
+use std/dirs shells-aliases *
 
 # Config
 $env.config.completions.algorithm = 'fuzzy'

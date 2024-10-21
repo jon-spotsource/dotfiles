@@ -1,5 +1,5 @@
 use ../commands [git-root]
-use node.nu ['nu-complete node scripts']
+use node.nu ['nu-complete node installed binaries', 'nu-complete node scripts']
 
 def 'nu-complete rush projects' [] {
 	mut $directory_path: path = pwd
@@ -24,6 +24,10 @@ def 'nu-complete rush projects' [] {
 		$directory_path = $directory_path | path dirname
 	}
 }
+
+export extern 'rush-pnpm exec' [
+	binary: string@'nu-complete node installed binaries'
+]
 
 export extern 'rush build' [
 	--to: string@'nu-complete rush projects'

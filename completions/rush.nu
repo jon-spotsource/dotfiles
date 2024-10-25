@@ -25,14 +25,18 @@ def 'nu-complete rush projects' [] {
 	}
 }
 
-export extern 'rush-pnpm exec' [
-	binary: string@'nu-complete node installed binaries'
-]
-
 export extern 'rush build' [
 	--to: string@'nu-complete rush projects'
 ]
 
+export extern 'rush deploy' [
+	--project (-p): string@'nu-complete rush projects'
+]
+
 export extern rushx [
 	script: string@'nu-complete node scripts'
+]
+
+export extern 'rush-pnpm exec' [
+	binary: string@'nu-complete node installed binaries'
 ]

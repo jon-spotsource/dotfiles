@@ -4,11 +4,11 @@
 # user/project) If '-p' ('--full-path') is given, the full paths to the
 # repository root are printed instead of relative ones.
 export extern 'ghq list' [
-	--bare = false # Query bare repositories
-	--exact (-e) = false # Perform an exact match
-	--full-path (-p) = false # Print full paths
+	--bare # Query bare repositories
+	--exact (-e) # Perform an exact match
+	--full-path (-p) # Print full paths
 	--help (-h) # Show help
-	--unique = false # Print unique subpaths
+	--unique # Print unique subpaths
 	--vcs: string # Specify vcs backend for matching
 
 	query?: string

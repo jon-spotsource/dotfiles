@@ -1,4 +1,5 @@
 export use devenv.nu *
+export use ghq.nu *
 export use knex.nu *
 export use npm.nu *
 export use pnpm.nu *

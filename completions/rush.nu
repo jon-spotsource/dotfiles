@@ -27,6 +27,7 @@ def 'nu-complete rush projects' [] {
 
 export extern 'rush build' [
 	--to: string@'nu-complete rush projects'
+	--to-except: string@'nu-complete rush projects'
 ]
 
 export extern 'rush deploy' [

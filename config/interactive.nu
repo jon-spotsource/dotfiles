@@ -4,6 +4,7 @@ overlay new user-config
 
 use std *
 use std/dirs shells-aliases *
+use std/formats *
 
 # Config
 $env.config.completions.algorithm = 'fuzzy'

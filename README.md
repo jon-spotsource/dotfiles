@@ -32,7 +32,7 @@ git update-index --assume-unchanged init.nu
 ```
 
 ## Config File Structure
-```nu
+```shell
 #!/usr/bin/env nu
 # $DOROTHY/user/config.local/interactive.nu
 
@@ -53,15 +53,15 @@ overlay use ../completions.local as user-completions-local
 
 Example:
 
-```nu
+```shell
 #!/usr/bin/env nu
-# $env.DOROTHY/user/commands/git-root
+# $DOROTHY/user/commands/git-root
 
 # Any other unexported completion commands, imports, etc.. go here
 
 # Returns root path of current git repo
 export def main [] {
-	^git rev-parse --show-toplevel | str trim
+  ^git rev-parse --show-toplevel | str trim
 }
 ```
 
@@ -80,9 +80,9 @@ Nushell files, while still preserving Nushell completions.
 Here's an example of how a Nushell command would be used in another
 command file:
 
-```nu
+```shell
 #!/usr/bin/env nu
-# $env.DOROTHY/user/commands.local/my-git-root
+# $DOROTHY/user/commands.local/my-git-root
 
 # This imports the `main` export under the name of imported file: `git-root`
 use ../commands/git-root
@@ -90,6 +90,6 @@ use ../commands/git-root
 export def main [] {
   # When `git-root` is called, it's using the imported Nushell command. It is
   # not executing the command file through the `$PATH`.
-	$'The root of this git repo is: (git-root)'
+  $'The root of this git repo is: (git-root)'
 }
 ```

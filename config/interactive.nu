@@ -34,7 +34,6 @@ $env.GNUPGHOME = '~/.gnupg/' | path expand
 $env.INFOPATH = '/usr/local/share/info'
 $env.MANPATH = '/usr/local/share/man'
 $env.NOTI_DEFAULT = 'banner telegram'
-$env.PNPM_HOME = '~/.local/share/pnpm' | path expand
 $env.XDG_BIN_HOME = '~/.local/bin' | path expand
 $env.XDG_CACHE_HOME = '~/.cache' | path expand
 $env.XDG_CONFIG_HOME = '~/.config' | path expand
@@ -42,21 +41,15 @@ $env.XDG_DATA_HOME = '~/.local/share' | path expand
 $env.XDG_STATE_HOME = '~/.local/state' | path expand
 
 # Paths
-path add ...[
-  ~/.rbenv/shims # Must be before Homebrew ruby
+path add ~/.rbenv/shims/
 
-  /nix/var/nix/profiles/default/bin/
-  /usr/local/bin/
-  /usr/local/MacGPG2/bin/ # GPG Suite
-  /usr/local/opt/ruby/bin/ # Homebrew ruby
-  /usr/local/sbin/
-  ~/.local/bin/
-  ~/.nix-profile/bin/
-  ~/.rvm/bin
-  $env.PNPM_HOME
-]
-
-$env.PATH = ($env.PATH | uniq) # Remove duplicates
+$env.PATH = (
+	$env.PATH
+		| path expand --no-symlink
+		| path parse
+		| path join
+		| uniq # Remove duplicates
+)
 
 overlay use ../commands as user-commands
 overlay use ../completions as user-completions

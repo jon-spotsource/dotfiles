@@ -1,6 +1,3 @@
 export def --wrapped main [...rest] {
-	^nix ...$rest ...[
-		--extra-experimental-features flakes,
-		--extra-experimental-features nix-command,
-	]
+	^nix --extra-experimental-features 'flakes nix-command' ...$rest
 }

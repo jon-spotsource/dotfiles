@@ -1,3 +1,4 @@
+export use aws-vault.nu *
 export use devenv.nu *
 export use ghq.nu *
 export use knex.nu *

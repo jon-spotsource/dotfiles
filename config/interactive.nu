@@ -15,15 +15,17 @@ $env.config.highlight_resolved_externals = true
 $env.config.history.file_format = 'sqlite'
 $env.config.history.sync_on_enter = false
 $env.config.hooks.display_output = { table }
-$env.config.hooks.pre_prompt = {
-  if not (
-    '.envrc' | path exists
-  ) or (^command-exists direnv | complete).exit_code != 0 {
-    return
-  }
+$env.config.hooks.pre_prompt = [
+	{
+		if not (
+			'.envrc' | path exists
+		) or (^command-exists direnv | complete).exit_code != 0 {
+			return
+		}
 
-  ^direnv export json | from json | default {} | load-env
-}
+		^direnv export json | from json | default {} | load-env
+	}
+]
 $env.config.rm.always_trash = true
 $env.config.show_banner = false
 $env.config.table.mode = 'thin'
@@ -43,6 +45,17 @@ $env.XDG_STATE_HOME = '~/.local/state' | path expand
 # Paths
 path add ~/.rbenv/shims/
 
+# $env.PATH = (
+# 	$env.PATH
+# 		| path expand --no-symlink
+# 		| path parse
+# 		| path join
+# 		| where ($it not-in [
+# 				/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin,
+# 				/Library/Developer/CommandLineTools/usr/bin,
+# 			])
+# 		| uniq # Remove duplicates
+# )
 $env.PATH = (
 	$env.PATH
 		| path expand --no-symlink
@@ -50,6 +63,13 @@ $env.PATH = (
 		| path join
 		| uniq # Remove duplicates
 )
+
+plugin add ~/.cargo/bin/nu_plugin_clipboard
+plugin add ~/.cargo/bin/nu_plugin_compress
+plugin add ~/.cargo/bin/nu_plugin_port_list
+plugin add ~/.cargo/bin/nu_plugin_query
+plugin add ~/.cargo/bin/nu_plugin_regex
+plugin add ~/.cargo/bin/nu_plugin_units
 
 overlay use ../commands as user-commands
 overlay use ../completions as user-completions

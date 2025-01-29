@@ -114,8 +114,15 @@ GO_LINTING_INSTALL='no'
 # Rust / Cargo / Crates.io
 # Used by `setup-rust`
 CARGO_INSTALL=(
-	'cargo-update'
-	'story-tracker-cli'
+	'cargo-update --locked'
+	'nu --features system-clipboard --locked'
+	'nu_plugin_clipboard --locked'
+	# 'nu_plugin_compress --locked'
+	'nu_plugin_port_list --locked'
+	'nu_plugin_query --locked'
+	'nu_plugin_regex --locked'
+	'nu_plugin_units --locked'
+	'story-tracker-cli --locked'
 )
 
 # Utilities to install, these are the [setup-util-*] scripts
@@ -131,7 +138,7 @@ SETUP_UTILS=(
 	'bottom'
 	'carapace'
 	'chrome'
-	'circleci'
+	# 'circleci'
 	'curl'
 	'delta'
 	'direnv'
@@ -151,7 +158,7 @@ SETUP_UTILS=(
 	# 'microsoft-teams'
 	'ngrok'
 	'nmap'
-	'nu'
+	# 'nu'
 	'obsidian'
 	# 'pgadmin'
 	'rectangle'

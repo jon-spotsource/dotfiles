@@ -28,6 +28,27 @@ symbol = " "
 [crystal]
 symbol = " "
 
+[custom.DEVELOPMENT_DATABASE_ENV]
+command = "$env.DATABASE_ENV"
+description = "Displays current environment of api-prisma repo"
+format = "(with [$output]($style) database )"
+style = "blue bold"
+when = "if ($env.DATABASE_ENV != development) { exit 1 }"
+
+[custom.STAGING_DATABASE_ENV]
+command = "$env.DATABASE_ENV"
+description = "Displays current environment of api-prisma repo"
+format = "(with [$output]($style) database )"
+style = "yellow bold"
+when = "if ($env.DATABASE_ENV != staging) { exit 1 }"
+
+[custom.PRODUCTION_DATABASE_ENV]
+command = "$env.DATABASE_ENV"
+description = "Displays current environment of api-prisma repo"
+format = "(with [$output]($style) database )"
+style = "red bold"
+when = "if ($env.DATABASE_ENV != production) { exit 1 }"
+
 [dart]
 symbol = " "
 

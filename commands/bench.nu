@@ -7,19 +7,9 @@ export def main [
 
 	# The number of benchmark rounds (hopefully the more rounds the less variance)
 	--rounds (-n) = 50
-	--sd-range: any # Show # sd range of results
+	--sd-range: int # Show min, max of # sd range of results
 	--verbose (-v) # Be more verbose (namely prints the progress)
-]: string -> any {
-	{
-		code: $code,
-		pretty: $pretty,
-		rounds: $rounds,
-		sd-range: $sd_range,
-		verbose: $verbose,
-	}
-		| inspect
-		| print
-
+]: any -> any {
 	if ($sd_range | is-empty) {
 		return (std bench --pretty=$pretty --rounds $rounds --verbose=$verbose $code)
 	}
@@ -30,22 +20,7 @@ export def main [
 		print $'($report.mean) +/- ($report.std)'
 	}
 
-	let $sd_range = match ($sd_range | describe) {
-		'bool' => { if $sd_range { 1 } },
-		'int' => { $sd_range },
-
-		$value_type => {
-			error make {
-				label: {
-					span: (metadata $sd_range).span,
-					text: $'Type `($value_type)` cannot be used'
-				},
-				msg: 'Unexpected value',
-			}
-		},
-	}
-
-	if ($sd_range | is-empty) {
+	if not ($sd_range >= 1) {
 		return
 	}
 
@@ -54,5 +29,5 @@ export def main [
 		max: ($report.mean + $report.std),
 	}
 		| to text
-		| print
+		| print --no-newline
 }

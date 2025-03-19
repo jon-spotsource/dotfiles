@@ -7,7 +7,6 @@
 # Shells that Dorothy supports, reorder them with most preferred first
 USER_SHELLS=(
 	# officially supported shells
-	nu   # nushell
 	zsh  # Z shell
 	bash # bourne again shell
 	# dash # debian almquist shell
@@ -22,4 +21,7 @@ USER_SHELLS=(
 	# ash  # almquist shell
 	# hush # hush, an independent implementation of a Bourne shell for BusyBox
 	sh # the operating-system symlinks this to any POSIX compliant shell
+
+	# Isn't POSIX, so VSCode fails resolving initial environment variables
+	# nu # nushell
 )

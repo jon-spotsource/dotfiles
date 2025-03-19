@@ -8,8 +8,12 @@ use std/formats *
 
 # Config
 $env.config.completions.algorithm = 'fuzzy'
+$env.config.cursor_shape.emacs = 'line'
+
+# 'Thu, 20 Feb 2025 08:32:12 -0500 (now)'
+$env.config.datetime_format.normal = null
 $env.config.datetime_format.table = '%F %T %z' # '2024-06-07 18:15:59 -0400'
-$env.config.filesize.metric = true
+$env.config.filesize.unit = 'metric'
 $env.config.footer_mode = 'always'
 $env.config.highlight_resolved_externals = true
 $env.config.history.file_format = 'sqlite'
@@ -29,6 +33,7 @@ $env.config.hooks.pre_prompt = [
 $env.config.rm.always_trash = true
 $env.config.show_banner = false
 $env.config.table.mode = 'thin'
+$env.config.use_ansi_coloring = 'auto'
 
 # Environment variables
 $env.DOROTHY_THEME = 'starship'
@@ -64,7 +69,7 @@ $env.PATH = (
 		| uniq # Remove duplicates
 )
 
-plugin add ~/.cargo/bin/nu_plugin_clipboard
+# plugin add ~/.cargo/bin/nu_plugin_clipboard
 plugin add ~/.cargo/bin/nu_plugin_compress
 plugin add ~/.cargo/bin/nu_plugin_port_list
 plugin add ~/.cargo/bin/nu_plugin_query

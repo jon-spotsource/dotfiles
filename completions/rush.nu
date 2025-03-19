@@ -20,6 +20,8 @@ export extern 'rush build' [
 	--to (-t): string@'nu-complete rush projects' # Normally all projects in the monorepo will be processed; adding this parameter will instead select a subset of projects. Each "--to" parameter expands this selection to include PROJECT and all its dependencies. "." can be used as shorthand for the project in the current working directory. For details, refer to the website article "Selecting subsets of projects".
 
 	--to-except: string@'nu-complete rush projects' # Normally all projects in the monorepo will be processed; adding this parameter will instead select a subset of projects. Each "--to-except" parameter expands this selection to include all dependencies of PROJECT, but not PROJECT itself. "." can be used as shorthand for the project in the current working directory. For details, refer to the website article "Selecting subsets of projects".
+
+  --verbose (-v) # Display the logs during the build, rather than just displaying the build status summary
 ]
 
 export extern 'rush deploy' [

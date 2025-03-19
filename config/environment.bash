@@ -28,6 +28,7 @@ PATH="/nix/var/nix/profiles/default/bin:$PATH"
 PATH="/usr/local/MacGPG2/bin:$PATH"
 PATH="${HOME}/.nix-profile/bin:$PATH"
 PATH="${HOME}/.rvm/bin:$PATH"
+PATH="/usr/bin:$PATH"
 
 # Used by: `pnpm`
 PNPM_HOME="${HOME}/.local/share/pnpm"

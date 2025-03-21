@@ -197,6 +197,13 @@ symbol = "󱘗 "
 [scala]
 symbol = " "
 
+[shell]
+bash_indicator = "bsh "
+disabled = false
+format = "[$indicator]($style)"
+nu_indicator = ""
+zsh_indicator = "zsh "
+
 [swift]
 symbol = " "
 

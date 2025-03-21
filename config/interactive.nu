@@ -41,6 +41,7 @@ $env.GNUPGHOME = '~/.gnupg/' | path expand
 $env.INFOPATH = '/usr/local/share/info'
 $env.MANPATH = '/usr/local/share/man'
 $env.NOTI_DEFAULT = 'banner telegram'
+$env.SHELL = 'nu'
 $env.XDG_BIN_HOME = '~/.local/bin' | path expand
 $env.XDG_CACHE_HOME = '~/.cache' | path expand
 $env.XDG_CONFIG_HOME = '~/.config' | path expand

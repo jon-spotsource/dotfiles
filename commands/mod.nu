@@ -1,4 +1,5 @@
-export use bench.nu *
-export use clip.nu *
+export use bench *
+export use clip *
 export use git-root *
 export use nix.nu *
+export use sleep-until *

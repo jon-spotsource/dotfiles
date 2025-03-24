@@ -1,8 +1,8 @@
-use ../commands [git-root]
+use ../commands/git-root
 use node.nu ['nu-complete node installed binaries', 'nu-complete node scripts']
 
 def 'nu-complete rush projects' [] {
-	let $rush_config_path: path = git-root | path join rush.json
+	let $rush_config_path: path = (git-root | path join rush.json)
 
 	if not ($rush_config_path | path exists) {
 		return

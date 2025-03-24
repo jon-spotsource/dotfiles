@@ -1,0 +1,36 @@
+#!/usr/bin/env nu
+
+use std [assert, log]
+
+@example 'Sleep until datetime' {
+	sleep-until --datetime 2025-03-24T11:17:50.382604-04:00
+}
+@example 'Sleep until duration' {
+	sleep-until --duration 5sec
+}
+export def main [
+	--datetime: datetime # Sleep until this datetime
+	--duration: duration # Sleep for this duration
+	--no-log = false # Skip logging datetime of when sleep will be over
+]: nothing -> nothing {
+	do {
+		let $list: list = [$datetime, $duration] | filter { is-not-empty }
+
+		if ($list | length) == 0 {
+			assert length $list 1 'Either --datetime or --duration must be specified.'
+		}
+
+		assert length $list 1 'Only --datetime or --duration can be used, but not both.'
+	}
+
+	let $now: datetime = (date now)
+
+	let $duration: duration = $duration | default ($datetime - $now)
+
+	if not $no_log {
+		let $sleep_ends_at: datetime = $datetime | default ($now + $duration)
+		log info $'Sleeping until ($sleep_ends_at)...'
+	}
+
+	sleep $duration
+}

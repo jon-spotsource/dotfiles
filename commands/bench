@@ -1,12 +1,12 @@
+#!/usr/bin/env nu
+
 use std
 
 export def main [
 	code: closure # The piece of `nushell` code to measure the performance of
 
 	--pretty # Shows the results in human-readable format: "<mean> +/- <stddev>"
-
-	# The number of benchmark rounds (hopefully the more rounds the less variance)
-	--rounds (-n) = 50
+	--rounds (-n) = 50 # The number of benchmark rounds (hopefully the more rounds the less variance)
 	--sd-range: int # Show min, max of # sd range of results
 	--verbose (-v) # Be more verbose (namely prints the progress)
 ]: any -> any {

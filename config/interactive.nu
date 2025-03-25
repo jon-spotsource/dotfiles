@@ -48,6 +48,8 @@ $env.XDG_CONFIG_HOME = '~/.config' | path expand
 $env.XDG_DATA_HOME = '~/.local/share' | path expand
 $env.XDG_STATE_HOME = '~/.local/state' | path expand
 
+log set-level 10 # DEBUG
+
 # Paths
 path add ~/.rbenv/shims/
 

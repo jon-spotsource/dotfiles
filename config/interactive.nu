@@ -73,10 +73,10 @@ $env.PATH = (
 		| uniq # Remove duplicates
 )
 
-# plugin add ~/.cargo/bin/nu_plugin_compress
-# plugin add ~/.cargo/bin/nu_plugin_port_list
+plugin add ~/.cargo/bin/nu_plugin_compress
+plugin add ~/.cargo/bin/nu_plugin_port_list
 plugin add ~/.cargo/bin/nu_plugin_query
-# plugin add ~/.cargo/bin/nu_plugin_regex
+plugin add ~/.cargo/bin/nu_plugin_regex
 # plugin add ~/.cargo/bin/nu_plugin_units
 
 overlay use ../commands as user-commands

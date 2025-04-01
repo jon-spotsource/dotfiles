@@ -13,6 +13,7 @@ $env.config.cursor_shape.emacs = 'line'
 # 'Thu, 20 Feb 2025 08:32:12 -0500 (now)'
 $env.config.datetime_format.normal = null
 $env.config.datetime_format.table = '%F %T %z' # '2024-06-07 18:15:59 -0400'
+$env.config.display_errors.exit_code = true
 $env.config.filesize.unit = 'metric'
 $env.config.footer_mode = 'always'
 $env.config.highlight_resolved_externals = true

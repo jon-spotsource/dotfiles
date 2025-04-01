@@ -2,12 +2,12 @@
 
 use std [assert, log]
 
-@example 'Sleep until datetime' {
-	sleep-until --datetime 2025-03-24T11:17:50.382604-04:00
-}
-@example 'Sleep until duration' {
-	sleep-until --duration 5sec
-}
+# @example 'Sleep until datetime' {
+# 	sleep-until --datetime 2025-03-24T11:17:50.382604-04:00
+# }
+# @example 'Sleep until duration' {
+# 	sleep-until --duration 5sec
+# }
 export def main [
 	--datetime: datetime # Sleep until this datetime
 	--duration: duration # Sleep for this duration

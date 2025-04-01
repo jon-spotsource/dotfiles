@@ -115,10 +115,10 @@ GO_LINTING_INSTALL='no'
 # Used by `setup-rust`
 CARGO_INSTALL=(
 	'cargo-update --locked'
-	'nu --features system-clipboard --locked'
+	'nu@0.102.0 --features system-clipboard --locked'
 	'nu_plugin_compress --locked'
 	'nu_plugin_port_list --locked'
-	'nu_plugin_query --locked'
+	'nu_plugin_query@0.102.0 --locked'
 	'nu_plugin_regex --locked'
 	'nu_plugin_units --locked'
 	'story-tracker-cli --locked'

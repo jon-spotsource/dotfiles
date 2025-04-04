@@ -4,7 +4,7 @@
 # v3 compatibility:
 # shellcheck disable=SC2034
 # export AWS_CLI_AUTO_PROMPT
-export HOMEBREW_ARCH HOMEBREW_RUBY_VERSION NVM_DIR LIBRARY_PATH PATH PNPM_HOME STARSHIP_CONFIG
+export HOMEBREW_ARCH HOMEBREW_RUBY_VERSION NVM_DIR PATH PNPM_HOME STARSHIP_CONFIG
 
 # Used by: `aws`
 # AWS_CLI_AUTO_PROMPT='on'
@@ -19,7 +19,7 @@ HOMEBREW_RUBY_VERSION='default'
 
 # Used by `cargo, setup-rust`
 # LIBRARY_PATH="${LIBRARY_PATH:-}:$(brew --prefix libiconv)/lib:$(xcrun --sdk macosx --show-sdk-path)/usr/lib"
-LIBRARY_PATH="${LIBRARY_PATH:-}:/usr/local/opt/libiconv/lib:/usr/local/opt/zlib/lib:$(xcrun --sdk macosx --show-sdk-path)/usr/lib"
+# LIBRARY_PATH="${LIBRARY_PATH:-}:/usr/local/opt/libiconv/lib:/usr/local/opt/zlib/lib:$(xcrun --sdk macosx --show-sdk-path)/usr/lib"
 
 # Used by: `setup-environment-commands`, `setup-node`
 NVM_DIR="${HOME}/.nvm"

@@ -115,13 +115,12 @@ GO_LINTING_INSTALL='no'
 # Used by `setup-rust`
 CARGO_INSTALL=(
 	'cargo-update --locked'
-	'nu@0.102.0 --features system-clipboard --locked' # 0.103.0 has select bug
 
-	# ^0.2.5 only supports nu@~0.103
-	'nu_plugin_compress@0.2.4 --locked'
+	# ^0.2.5 only supports nu@^0.103
+	'nu_plugin_compress@<0.2.5 --locked'
 	'nu_plugin_port_list --locked'
-	'nu_plugin_query@0.102.0 --locked' # ^0.103 only supports nu@~0.103
-	'nu_plugin_regex@0.11.0 --locked'  # ^0.12 only supports nu@~0.103
+	'nu_plugin_query@<0.103 --locked' # ^0.103 only supports nu@^0.103
+	'nu_plugin_regex@<0.12 --locked'  # ^0.12 only supports nu@^0.103
 	'nu_plugin_units --locked'
 	'story-tracker-cli --locked'
 )
@@ -159,7 +158,7 @@ SETUP_UTILS=(
 	# 'microsoft-teams'
 	'ngrok'
 	'nmap'
-	# 'nu'
+	'nu'
 	'obsidian'
 	# 'pgadmin'
 	'rectangle'

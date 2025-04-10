@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
+function command_working_test() (
+	source "$DOROTHY/sources/bash.bash"
+	echo-style --h1="TEST: $0"
+
+	eval-tester --status=3 --stderr="< 'this-is-a-non-existent-command' />[3] not working because it is missing" \
+		-- env COLOR=no command-working -- this-is-a-non-existent-command
+
+	eval-tester --status=3 --stderr="< 'this-is-a-non-existent-command' />[3] not working because it is missing" \
+		-- env COLOR=no command-working -- this-is-a-non-existent-command command-missing
+
+	eval-tester \
+		-- command-working -- command-exists
+
+	eval-tester \
+		-- command-working -- command-exists command-missing
+
+	echo-style --g1="TEST: $0"
+	return 0
+)
 function command_working() (
 	source "$DOROTHY/sources/bash.bash"
 
@@ -9,7 +28,7 @@ function command_working() (
 	function help {
 		cat <<-EOF >/dev/stderr
 			ABOUT:
-			Check if a <command> is available and working.
+			Check if <command>s are available and working.
 			Working check is done via [<command> --help] and [<command> --version] checks.
 
 			USAGE:
@@ -20,18 +39,22 @@ function command_working() (
 			    Test the command with sudo.
 
 			RETURNS:
-			[0] if all commands are working
-			[1] if any command was not working
+			[0] if ALL commands are working
+			[1] if the first failure was due to the command not working
+			[3] if the first failure was due to the command not existing
+
+			QUIRKS:
+			Returns on first failure.
 		EOF
-		if test "$#" -ne 0; then
+		if [[ $# -ne 0 ]]; then
 			echo-error "$@"
 		fi
 		return 22 # EINVAL 22 Invalid argument
 	}
 
 	# process
-	local item commands=() option_sudo='no'
-	while test "$#" -ne 0; do
+	local item option_commands=() option_sudo='no'
+	while [[ $# -ne 0 ]]; do
 		item="$1"
 		shift
 		case "$item" in
@@ -40,59 +63,61 @@ function command_working() (
 			option_sudo="$(get-flag-value --affirmative --fallback="$option_sudo" -- "$item")"
 			;;
 		'--')
-			commands+=("$@")
+			option_commands+=("$@")
 			shift "$#"
 			break
 			;;
 		'--'*) help "An unrecognised flag was provided: $item" ;;
-		*) commands+=("$item") ;;
+		*) option_commands+=("$item") ;;
 		esac
 	done
 
 	# check
-	if test "${#commands[@]}" -eq 0; then
+	if [[ ${#option_commands[@]} -eq 0 ]]; then
 		help 'No <command>s provided.'
 	fi
 
 	# =====================================
 	# Helpers
 
+	# exceptions are all commands that do not respond to a version or help query
 	# https://github.com/greymd/teip/issues/29
 	# https://trunkcommunity.slack.com/archives/C0205B6KK8X/p1661601215325159
 	local failures=() exceptions=(
 		dash
 		ksh
+		rmtrash
 		rpi-update
 		ssh-askpass
 		sshd
 		teip
+		trash
 		trunk
 
 		# Added
 		keka
-		trash
 	)
 	function check_status {
 		local cmd=() cmd_string cmd_exit_status cmd_output
 		# ensure sbin commands work
-		if [[ $* == *sbin* ]] || test "$option_sudo" = 'yes'; then
+		if [[ $* == *sbin* || $option_sudo == 'yes' ]]; then
 			cmd+=(
 				'sudo-helper'
 				'--reason=Your sudo/root/login password is required to verify this command is available and working:'
 				'--'
 			)
 		fi
-		# continue with the comand
+		# continue with the command
 		cmd+=("$@")
 		# run the command hiding the output
 		eval_capture --statusvar=cmd_exit_status --outputvar=cmd_output -- "${cmd[@]}"
 		# check for correct failure codes
-		if test "$cmd_exit_status" -eq 22 -o "$cmd_exit_status" -eq 200; then
+		if [[ $cmd_exit_status -eq 22 || $cmd_exit_status -eq 200 ]]; then
 			return 0
 		else
 			# otherwise return success or failure code
 			cmd_string="$(echo-escape-command -- "${cmd[@]}")"
-			if test -n "$cmd_output"; then
+			if [[ -n $cmd_output ]]; then
 				cmd_output+=$'\n'
 			fi
 			failures+=("$(
@@ -109,10 +134,10 @@ function command_working() (
 		local cmd cmd_string
 		cmd_string="$(echo-escape-command -- "$1")"
 		cmd="$(type -P "$1" 2>/dev/null || :)"
-		if test -z "$cmd"; then
+		if [[ -z $cmd ]]; then
 			# we must at least find it
-			echo-style --element/+red="$cmd_string" --status=404 ' ' --error='not working because it is missing' >/dev/stderr
-			return 1
+			echo-style --element/+red="$cmd_string" --status=3 ' ' --error='not working because it is missing' >/dev/stderr
+			return 3 # ESRCH 3 No such process
 		fi
 
 		# check if presence is enough for this cmd
@@ -141,18 +166,22 @@ function command_working() (
 	# Action
 
 	local command action_exit_status
-	for command in "${commands[@]}"; do
+	for command in "${option_commands[@]}"; do
 		eval_capture --statusvar=action_exit_status -- check_working "$command"
-		if test "$action_exit_status" -eq 0; then
+		if [[ $action_exit_status -eq 0 ]]; then
 			continue
 		else
-			return 1 # command not working
+			return "$action_exit_status"
 		fi
 	done
 	return 0 # all commands are working
 )
 
 # fire if invoked standalone
-if test "$0" = "${BASH_SOURCE[0]}"; then
-	command_working "$@"
+if [[ $0 == "${BASH_SOURCE[0]}" ]]; then
+	if [[ $* == '--test' ]]; then
+		command_working_test
+	else
+		command_working "$@"
+	fi
 fi

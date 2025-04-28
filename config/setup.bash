@@ -81,7 +81,7 @@ HOMEBREW_FONTS=(
 	# 'font-ubuntu'
 )
 HOMEBREW_FORMULAS=(
-	'caddy'
+	# 'caddy'
 	'noti'
 )
 # HOMEBREW_SLOW_FORMULAS=()
@@ -135,7 +135,7 @@ SETUP_UTILS=(
 	'aws-vault'
 	'bash'
 	'bat'
-	'bottom'
+	# 'bottom'
 	'carapace'
 	'chrome'
 	# 'circleci'

@@ -1,0 +1,5 @@
+#!/usr/bin/env nu
+
+export def main [$commit = '@{u}']: any -> any {
+	^git reset --mixed $commit
+}

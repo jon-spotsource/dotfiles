@@ -51,24 +51,18 @@ $env.XDG_STATE_HOME = '~/.local/state' | path expand
 log set-level 10 # DEBUG
 
 # Paths
-path add ~/.rbenv/shims/
+# path add ~/.rbenv/shims/
 
-# $env.PATH = (
-# 	$env.PATH
-# 		| path expand --no-symlink
-# 		| path parse
-# 		| path join
-# 		| where ($it not-in [
-# 				/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin,
-# 				/Library/Developer/CommandLineTools/usr/bin,
-# 			])
-# 		| uniq # Remove duplicates
-# )
 $env.PATH = (
 	$env.PATH
+		| split row :
 		| path expand --no-symlink
 		| path parse
 		| path join
+		# | where ($it not-in [
+		# 		/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin,
+		# 		/Library/Developer/CommandLineTools/usr/bin,
+		# 	])
 		| uniq # Remove duplicates
 )
 

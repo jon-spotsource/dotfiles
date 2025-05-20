@@ -121,7 +121,7 @@ CARGO_INSTALL=(
 	'nu_plugin_port_list --locked'
 	'nu_plugin_query@<0.103 --locked' # ^0.103 only supports nu@^0.103
 	'nu_plugin_regex@<0.12 --locked'  # ^0.12 only supports nu@^0.103
-	'nu_plugin_units --locked'
+	# 'nu_plugin_units@<0.1.5 --locked' # No version supports nu@^0.103
 	'story-tracker-cli --locked'
 )
 
@@ -146,7 +146,7 @@ SETUP_UTILS=(
 	'docker'
 	'dust'
 	'firefox-dev'
-	'fzf'
+	# 'fzf'
 	'gh'
 	'ghq'
 	'git'
@@ -165,7 +165,7 @@ SETUP_UTILS=(
 	'ripgrep'
 	'starship'
 	# 'tailscale'
-	'tealdeer'
+	'tldr'
 	'tree'
 	'twingate'
 	'vim'
